@@ -1,33 +1,102 @@
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+
+  background-color: #777;
+
+  font-family: "Roboto", sans-serif;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
 
 li {
-    float: left;
+  float: left;
+  font-size: 26px;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Transactions */
+.fromto {
+    display: inline;
+}
+.timestamp {
+    display: inline;
+}
+.amount {
+    display: inline;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: #5ADD66;
+  background-color: #5ADD66;
 }
 
 .active {
+  background-color: #37AA33;
+}
+
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  font-size: 48px;
+}
+
+p {
+    font-size: 20px;
+}
+
+button {
+    background-color: #5ADD66;
+    color: white;
+
+    font-size: 34px;
+    font-family: 'Roboto', monospace;
+
+    border-style: none;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+button:hover {
     background-color: #37AA33;
+}
+
+button:active {
+    padding: 5px;
+}
+
+input {
+    border-radius: 25px;
+    border-style: none;
+    padding: 10px;
+}
+
+#logged-in {
+    display: none;
+}
+
+#logged-out {
+    display: block;
 }
