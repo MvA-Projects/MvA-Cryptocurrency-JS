@@ -32,9 +32,9 @@ function getWallet() {
         })
         .then(function(myJson) {
             console.log(JSON.stringify(myJson));
-            document.getElementById("ww-address").innerHTML = myJson.address;
-            document.getElementById("ww-balance").innerHTML = myJson.balance;
-            document.getElementById("transactions").innerHTML = myJson.transactions[myJson.transactions.length];
+            document.getElementById("ww-address").innerHTML = "Address: " + myJson.address;
+            document.getElementById("ww-balance").innerHTML = "Balance: " + myJson.balance;
+            document.getElementById("transactions").innerHTML = myJson.history[myJson.history.length];
         });
 }
 
@@ -76,6 +76,8 @@ function checkForWallet() {
     if (localStorage.address != null) {
         document.getElementById('logged-in').style.display = "block";
         document.getElementById('logged-out').style.display = "none";
+        getWallet();
+
     } else {
         document.getElementById('logged-in').style.display = "none";
         document.getElementById('logged-out').style.display = "block";
@@ -83,6 +85,6 @@ function checkForWallet() {
 }
 
 setInterval(() => {
-    transactionColors();
+    // transactionColors();
     checkForWallet();
 })
