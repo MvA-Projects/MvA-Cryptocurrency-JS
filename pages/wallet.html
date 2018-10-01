@@ -2,78 +2,62 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="../css/main.css" />
-  <script src="../js/main.js"></script>
-  <title>MvA-Cryptocurrency-JS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <script src="../js/main.js"></script>
+    <title>MvA-Cryptocurrency-JS</title>
 </head>
 
 <body>
 
-  <div class="top-menu-bar">
-      <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a class="active" href="wallet.html">Wallet</a></li>
-          <li><a href="about.html">About</a></li>
-      </ul>
-  </div>
+    <div class="top-menu-bar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a class="active" href="wallet.html">Wallet</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
 
-  <div class="content" id="logged-out">
-      <p class="header">
-          Access Wallet.
-      </p>
-      <hr />
-      Address: <input type="text" /><br>
-      Password: <input type="password" /><br />
-      <button>Access Wallet</button>
-      <hr />
-      <p class="header">
-          Create Wallet.
-      </p>
-      <hr />
-      Password: <input type="password" /> <button style="font-size: 14px;">Create Wallet</button>
-  </div>
+    <div class="content" id="logged-out">
+        <p class="header">
+            Access Wallet.
+        </p>
+        <hr />
+        Address: <input id="login-address" type="text" /><br>
+        Password: <input id="login-password" type="password" /><br />
+        <button onclick="loginWallet()">Access Wallet</button>
+        <hr />
+        <p class="header">
+            Create Wallet.
+        </p>
+        <hr />
+        Password: <input id="create-password" type="password" /> <button style="font-size: 14px;" onclick="createWallet()">Create Wallet</button>
+    </div>
 
-  <div class="content" id="logged-in">
-      <p class="header">
-          Your Wallet.
-      </p>
-      <hr />
-      <p>
-          Address: MvA47217s98ne793j8983j<br />
-          Balance: 5 Coins<br />
-      </p>
-      <p>
-          Transactions
-      </p>
-      <div class="transaction">
-          <p class="timestamp">
-              10/1/2018 9:47
-          </p>
-          <p class="amount">
-              +15
-          </p>
-          <p class="fromto">
-              From MvA3289723207n8128gh
-          </p>
-      </div>
-      <div class="transaction">
-          <p class="timestamp">
-              10/1/2018 10:34
-          </p>
-          <p class="amount">
-              -10
-          </p>
-          <p class="fromto">
-              To MvA3289723207n8128gh
-          </p>
-      </div>
-      <p class="header">
-          Transfer.
-      </p>
-      <hr />
-      Address: <input type="text" /> Amount: <input type="number" /> <button style="font-size: 14px;">Transfer</button>
-  </div>
+    <div class="content" id="logged-in">
+        <p class="header">
+            Your Wallet.
+        </p>
+        <hr />
+        <p id="ww-address">
+            Address:
+        </p>
+        <p id="ww-balance">
+            Balance: 0
+        </p>
+        <p>
+            Latest Transaction:
+        </p>
+        <div class="transactions">
+
+        </div>
+
+        <p class="header">
+            Transfer.
+        </p>
+        <hr />
+        Address: <input id="transfer-to" type="text" /> Amount: <input type="number" id="transfer-amount" /> <button style="font-size: 14px;" onclick="transfer()">Transfer</button>
+    </div>
 
 </body>
 

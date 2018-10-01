@@ -10,6 +10,68 @@ function transactionColors() {
     }
 }
 
+function transfer() {
+    let from = localStorage.address;
+    let to = document.getElementById("transfer-to").value;
+    let amount = document.getElementById("transfer-amount").value;
+    let password = localStorage.password;
+
+    fetch('127.0.0.1:3000/transfer/' + from + "/" + to + "/" + amount + "/" + password)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            alert(myJson.status);
+        });
+}
+
+function getWallet() {
+    fetch('127.0.0.1:3000/information/' + localStorage.address)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            console.log(JSON.stringify(myJson));
+            document.getElementById("ww-address").innerHTML = myJson.address;
+            document.getElementById("ww-balance").innerHTML = myJson.balance;
+            document.getElementById("transactions").innerHTML = myJson.transactions[myJson.transactions.length];
+        });
+}
+
+function createWallet() {
+    if (document.getElementById("create-password").value != null) {
+        fetch('127.0.0.1:3000/create/' + document.getElementById("create-password").value)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(myJson) {
+                alert("Success! Write your address down somewhere: " + myJson.address)
+            });
+    } else {
+        alert("Please enter a password.");
+    }
+
+}
+
+function loginWallet() {
+    if (document.getElementById("login-address").value != null && document.getElementById("login-password").value) {
+        fetch('127.0.0.1:3000/login/' + document.getElementById("login-address").value + "/" + document.getElementById("login-password").value)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(myJson) {
+                if (myJson.status == "success") {
+                    localStorage.address = myJson.address;
+                    localStorage.password = document.getElementById("login-password").value;
+                } else {
+                    alert("Error, incorrect login details.");
+                }
+            });
+    } else {
+        alert("Please enter an address and password.");
+    }
+}
+
 function checkForWallet() {
     if (localStorage.address != null) {
         document.getElementById('logged-in').style.display = "block";
@@ -20,7 +82,7 @@ function checkForWallet() {
     }
 }
 
-setInterval(()=>{
+setInterval(() => {
     transactionColors();
     checkForWallet();
 })
