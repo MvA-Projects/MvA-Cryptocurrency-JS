@@ -16,7 +16,7 @@ function transfer() {
     let amount = document.getElementById("transfer-amount").value;
     let password = localStorage.password;
 
-    fetch('127.0.0.1:3000/transfer/' + from + "/" + to + "/" + amount + "/" + password)
+    fetch('http://127.0.0.1:3000/transfer/' + from + "/" + to + "/" + amount + "/" + password)
         .then(function(response) {
             return response.json();
         })
@@ -26,7 +26,7 @@ function transfer() {
 }
 
 function getWallet() {
-    fetch('127.0.0.1:3000/information/' + localStorage.address)
+    fetch('http://127.0.0.1:3000/information/' + localStorage.address)
         .then(function(response) {
             return response.json();
         })
@@ -40,7 +40,7 @@ function getWallet() {
 
 function createWallet() {
     if (document.getElementById("create-password").value != null) {
-        fetch('127.0.0.1:3000/create/' + document.getElementById("create-password").value)
+        fetch('http://127.0.0.1:3000/create/' + document.getElementById("create-password").value)
             .then(function(response) {
                 return response.json();
             })
@@ -55,7 +55,7 @@ function createWallet() {
 
 function loginWallet() {
     if (document.getElementById("login-address").value != null && document.getElementById("login-password").value) {
-        fetch('127.0.0.1:3000/login/' + document.getElementById("login-address").value + "/" + document.getElementById("login-password").value)
+        fetch('http://127.0.0.1:3000/login/' + document.getElementById("login-address").value + "/" + document.getElementById("login-password").value)
             .then(function(response) {
                 return response.json();
             })
