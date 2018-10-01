@@ -31,10 +31,9 @@ function getWallet() {
             return response.json();
         })
         .then(function(myJson) {
-            console.log(JSON.stringify(myJson));
             document.getElementById("ww-address").innerHTML = "Address: " + myJson.address;
             document.getElementById("ww-balance").innerHTML = "Balance: " + myJson.balance;
-            document.getElementById("transactions").innerHTML = myJson.history[myJson.history.length];
+            document.getElementById("transaction").innerHTML = myJson.history[myJson.history.length - 1].hash;
         });
 }
 
@@ -46,6 +45,8 @@ function createWallet() {
             })
             .then(function(myJson) {
                 alert("Success! Write your address down somewhere: " + myJson.address)
+                localStorage.address = myJson.address;
+                localStorage.password = document.getElementById("create-password").value;
             });
     } else {
         alert("Please enter a password.");
@@ -86,5 +87,7 @@ function checkForWallet() {
 
 setInterval(() => {
     // transactionColors();
-    checkForWallet();
+    if (location.href == "file:///C:/Users/maxha/Documents/GitHub/MvA-Cryptocurrency-JS/pages/wallet.html") {
+        checkForWallet();
+    }
 })
