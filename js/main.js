@@ -1,3 +1,5 @@
+let backend = "https://mva-projects.github.io/MvA-Account-Manager-BACKEND/"
+
 function transactionColors() {
     let amounts = document.getElementsByClassName('amount');
 
@@ -16,7 +18,7 @@ function transfer() {
     let amount = document.getElementById("transfer-amount").value;
     let password = localStorage.password;
 
-    fetch('http://127.0.0.1:3000/transfer/' + from + "/" + to + "/" + amount + "/" + password)
+    fetch(backend+'transfer/' + from + "/" + to + "/" + amount + "/" + password)
         .then(function(response) {
             return response.json();
         })
@@ -26,7 +28,7 @@ function transfer() {
 }
 
 function getWallet() {
-    fetch('http://127.0.0.1:3000/information/' + localStorage.address)
+    fetch(backend+'information/' + localStorage.address)
         .then(function(response) {
             return response.json();
         })
@@ -39,7 +41,7 @@ function getWallet() {
 
 function createWallet() {
     if (document.getElementById("create-password").value != null) {
-        fetch('http://127.0.0.1:3000/create/' + document.getElementById("create-password").value)
+        fetch(backend+'create/' + document.getElementById("create-password").value)
             .then(function(response) {
                 return response.json();
             })
@@ -56,7 +58,7 @@ function createWallet() {
 
 function loginWallet() {
     if (document.getElementById("login-address").value != null && document.getElementById("login-password").value) {
-        fetch('http://127.0.0.1:3000/login/' + document.getElementById("login-address").value + "/" + document.getElementById("login-password").value)
+        fetch(backend+'login/' + document.getElementById("login-address").value + "/" + document.getElementById("login-password").value)
             .then(function(response) {
                 return response.json();
             })
@@ -87,7 +89,7 @@ function checkForWallet() {
 
 setInterval(() => {
     // transactionColors();
-    if (location.href == "file:///C:/Users/maxha/Documents/GitHub/MvA-Cryptocurrency-JS/pages/wallet.html") {
+    if (location.href == "./pages/wallet.html") {
         checkForWallet();
     }
 })
